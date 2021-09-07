@@ -3,7 +3,7 @@
 #include <time.h>
 
 
-void Design(void) {
+void printMenu(void) {
 
     printf("\n\n");
 
@@ -27,7 +27,7 @@ int main()
 
     Rock = 0; Scissor = 0; Paper = 0;
 
-    Design();
+    printMenu();
 
     printf("\n Enter your choice: ");
 
