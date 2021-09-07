@@ -28,9 +28,13 @@ int main()
 
     printf("\n\tRock, Scissor Paper Game by Kalo");
 
-    int Rock, Scissor, Paper, exit, userChoice, userCount, computerCount;
+    int Rock, Scissor, Paper, exit, userChoice, userCount, computerCount, drawsCount;
+
+    int compRock, compScissor, compPaper;
 
     exit = 0;
+
+    drawsCount = 0;
 
     userCount = 0;
 
@@ -39,6 +43,7 @@ int main()
     do {
 
     Rock = 0; Scissor = 0; Paper = 0;
+    compRock = 0; compScissor = 0; compPaper = 0;
 
     printMenu();
 
@@ -75,7 +80,7 @@ int main()
 
     int random = rand();      // Returns a pseudo-random integer between 0 and RAND_MAX.
 
-    int randomZeroOne = random % 2;
+    int randomZeroOne = random % 3;
 
     if(Rock == 1 && Scissor == 0 && Paper == 0) {
         if(randomZeroOne == 0) {
@@ -84,10 +89,18 @@ int main()
 
         printf("Computer chooses Scissor");
 
-        } else {
+        } else if(randomZeroOne == 1) {
 
         Paper = 1;
+
         printf("Computer chooses Paper");
+
+        } else {
+
+        compRock = 1;
+
+        printf("Computer chooses Rock");
+
         }
 
         if(Rock == 1 && Scissor == 1) {
@@ -106,22 +119,34 @@ int main()
 
         computerCount++;
 
+        } else if(Rock == 1 && compRock == 1) {
+
+        printf("\n\nNo One win.\n");
+
+        drawsCount++;
 
         }
     }
 
-    if(Rock == 0 && Scissor == 1 && Paper == 0) {
+        if(Rock == 0 && Scissor == 1 && Paper == 0) {
+
         if(randomZeroOne == 0) {
 
         Rock = 1;
 
         printf("Computer chooses Rock");
 
-        } else {
+        } else if(randomZeroOne == 1) {
 
         Paper = 1;
 
         printf("Computer chooses Paper");
+
+        } else {
+
+        compScissor = 1;
+
+        printf("Computer chooses Scissor");
 
         }
 
@@ -143,21 +168,31 @@ int main()
         userCount++;
 
 
+        } else if(Scissor == 1 && compScissor == 1) {
+            printf("\n\nNo one win\n");
+
+            drawsCount++;
+
         }
     }
 
     if(Rock == 0 && Scissor == 0 && Paper == 1) {
+
         if(randomZeroOne == 0) {
 
         Rock = 1;
 
         printf("Computer chooses Rock");
 
-        } else {
+        } else if(randomZeroOne == 1){
 
         Scissor = 1;
 
         printf("Computer chooses Scissor");
+
+        } else {
+
+        compScissor = 1;
 
         }
 
@@ -177,10 +212,16 @@ int main()
 
         computerCount++;
 
+        } else if(Paper == 1 && compPaper == 1) {
+
+            printf("\n\nNo One win.\n");
+
+            drawsCount++;
+
         }
     }
 
-    printf("Wins: You: %d | Computer: %d", userCount, computerCount);
+    printf("\n\nWins: You: %d | Computer: %d , Draws: %d", userCount, computerCount, drawsCount);
 
     reset();
 
