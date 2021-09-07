@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-
 void printMenu(void) {
 
     printf("\n\n");
@@ -14,14 +13,28 @@ void printMenu(void) {
 
 }
 
+void yellow() {
+  printf("\033[1;33m");
+}
+
+void reset () {
+  printf("\033[0m");
+}
+
 int main()
 {
 
+    system("color 07");
+
     printf("\n\tRock, Scissor Paper Game by Kalo");
 
-    int Rock, Scissor, Paper, exit, userChoice;
+    int Rock, Scissor, Paper, exit, userChoice, userCount, computerCount;
 
     exit = 0;
+
+    userCount = 0;
+
+    computerCount = 0;
 
     do {
 
@@ -46,6 +59,9 @@ int main()
     }
 
     printf("\n");
+
+    yellow();
+
 
     if(Rock == 1) {
         printf("You choose Rock <--> ");
@@ -80,11 +96,16 @@ int main()
 
         printf("\n\nYou win!\n");
 
+        userCount++;
+
         } else if (Rock == 1 && Paper == 1) {
         //When i choose Rock
         //Rock lose from Paper
 
         printf("\n\nComputer win!\n");
+
+        computerCount++;
+
 
         }
     }
@@ -110,11 +131,17 @@ int main()
 
         printf("\n\nComputer win!\n");
 
+        computerCount++;
+
+
         } else if (Scissor == 1 && Paper == 1) {
         //When i choose Rock
         //Rock lose from Paper
 
         printf("\n\nYou win!\n");
+
+        userCount++;
+
 
         }
     }
@@ -140,16 +167,22 @@ int main()
 
         printf("\n\nYou win!\n");
 
+        userCount++;
+
         } else if (Paper == 1 && Scissor == 1) {
         //When i choose Rock
         //Paper lose from Scissor
 
         printf("\n\nComputer win!\n");
 
+        computerCount++;
+
         }
     }
 
+    printf("Wins: You: %d | Computer: %d", userCount, computerCount);
 
+    reset();
 
     } while( exit == 0);
 
